@@ -27,7 +27,11 @@ my_dir = File('root', files=[
 # files: (list) a list of the files in the directory
 #               None if this file is not directory
 
-# The equivalent structure
+# The equivalent structure: We can actually make it in our project Dir;
+# In Homebrew: $ install Tree then in terminal you can use the follwoing 
+# command $ tree <Root folder> then we can see the graphic of our directory
+# here jourmey is folder the rest are files.
+
 # root
 # ├── almonds
 # │   ├── default
@@ -44,7 +48,14 @@ def print_files(file):
     # what's the recursive case?
     # what's the base case (how do we know to stop recursing)?
     # when should we print?
-    pass
+    if not file.is_dir:
+        print(file.name)
+    else:
+        # it is a directory
+        # check each of the child files
+        for child in file.files:
+            print_files(child)    
+
 
 print("== print_files ==")
 print_files(my_dir)
