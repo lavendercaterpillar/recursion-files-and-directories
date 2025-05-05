@@ -138,6 +138,26 @@ print_indented(my_dir)
 #         journey
 #     capture
 
+
+def has_file(file, name):
+    if file.name == name:
+        return True
+    elif not file.is_dir:
+        return False
+    
+    for child in file.files:
+        # return has_file(child, name) # This will stop the loop and won't iterate
+        if has_file(child, name):
+            return True
+    
+    return False
+
+print("== has_file ==")
+print(has_file(my_dir,"fortune"))  # True
+print(has_file(my_dir,"blanket"))  # True
+print(has_file(my_dir,"harvest"))  # True
+print(has_file(my_dir,"Not found"))  # False
+
 #
 # SUPER ULTRA BONUS QUESTION
 #############################
