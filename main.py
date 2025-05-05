@@ -115,13 +115,13 @@ def print_indented(file, depth=0):
     # how do we update the depth passed in the parameters?
 
     # the following code can be used to build the indentation based on the depth
-    # indent = "    " * depth
-    
-    
+    indent = "    " * depth
+    print(f"{indent}{file.name}")
 
+    if file.is_dir:
+        for child in file.files:
+            print_indented(child, depth + 1)  # here we keep track of our indentation using depth
 
-
-    pass
 
 print("== print_indented ==")
 print_indented(my_dir)
