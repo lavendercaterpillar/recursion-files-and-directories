@@ -5,6 +5,7 @@ class File:
         self.is_dir = files is not None
 
 # Nested structure representing a directory hierarchy
+# Note how a directory is made from File class
 my_dir = File('root', files=[
     File('almonds', files=[
         File('default', files=[
@@ -71,7 +72,24 @@ def print_dirs(file):
     # what's the recursive case?
     # what's the base case (how do we know to stop recursing)?
     # when should we print?
-    pass
+    
+    # if file.is_dir:
+    #     print(file.name)
+    # else:
+    #     return
+    # # It's a directory
+    # for child in file.files:
+    #     print_dirs(child)
+    
+    # or
+    if not file.is_dir:
+        return
+    print(file.name)
+
+    # It's a directory
+    for child in file.files:
+        print_dirs(child)
+    
 
 print("== print_dirs ==")
 print_dirs(my_dir)
@@ -99,6 +117,10 @@ def print_indented(file, depth=0):
     # the following code can be used to build the indentation based on the depth
     # indent = "    " * depth
     
+    
+
+
+
     pass
 
 print("== print_indented ==")
